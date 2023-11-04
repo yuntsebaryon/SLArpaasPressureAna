@@ -1,0 +1,59 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[titletoc,title]{appendix}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amscd}
+\usepackage{amsfonts}
+\usepackage{graphicx}%
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{sectsty}
+\usepackage[colorlinks=true,linkcolor=black,anchorcolor=black,citecolor=black,filecolor=black,menucolor=black,runcolor=black,urlcolor=black]{hyperref}
+\usepackage{siunitx}
+\usepackage{cleveref}
+% \usepackage{natbib}
+% \usepackage{biblatex} %Imports biblatex package
+% \addbibresource{PDR.bib} %Import the bibliography file
+\usepackage{csquotes}
+
+%-----------------------------------------------
+
+\hyphenation{LArTPC}
+\hyphenation{LArTPCs}
+
+%-----------------------------------------------
+
+%-----------------------------------------------
+
+\pagestyle{fancy}\lhead{}
+\setlength{\parindent}{0em}
+
+\title{SLArpaas Engineering Note}
+\author{Yun-Tse Tsai}
+
+%-----------------------------------------------
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+%------------------------------------------------
+% Main text
+% -----------------------------------------------
+\input{tex/introduction}
+\input{tex/system}
+
+%------------------------------------------------
+% Appendix
+% -----------------------------------------------
+\clearpage
+\begin{appendices}
+\input{tex/TopPlatePressure}
+
+\end{appendices}
+
+\end{document}
