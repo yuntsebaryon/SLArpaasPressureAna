@@ -3,15 +3,162 @@
 
 The top plate of SLArpaas is made of stainless steel 304, and has
 a thickness of 0.5~in.
+All the calculations in this appendix can be found
+at \url{https://github.com/yuntsebaryon/SLArpaasPressureAna/blob/main/notebook/Top%20Flange%20Stress.ipynb}.
 
 \subsection{Minimum Required Top Plate Thickness}
 \label{app:blind_flange}
 
 The minimum required thickness for the top plate is calcuated assuming
-a blind plate.  Eq. UG-34 (c)(2)(1) below is used.
+a blind plate.  Eq. UG-34(c)(2)(1) below is used.
 
 \begin{equation}
     t= d\sqrt{CP/SE}
 \end{equation}
 
 \input{table/blind_flange}
+
+The SLArpaas top plate has a thickness of 0.5~in, greater than the minimum
+required thickness, 0.225~in.
+
+% ----------------------------------------------------------------------
+\subsection{Ring Flange Stress}
+\label{app:ring_flange}
+
+SLArpaas has flat face flanges with metal-to-metal contact outside the bolt
+circle, and Figure~Y-5.1.3 in non-Mandatory Appendix~Y, Class~3 Flange Assembly
+applies.
+
+% ----------------------------------------------------------------------
+\subsubsection{Bolt Load}
+\label{app:bolt_load}
+
+SLArpaas has an O-ring, one of the self-energizing types (Table~2.5-1),
+and therefore Mandatory Appendix~2 is referred herein.
+The minimum required bolt load for the operating conditions,
+$W_{m1}$, can be obtained following Eq.~2-5(c)(3)(-a) with $H_p = 0$,
+
+\begin{equation}
+    W_{m1} = H + H_p = H = 0.785G^2 P,
+\end{equation}
+
+where $G = 15.25$~in, corresponding to the outside diamter of gasket contact
+face in option (b) of the definition of $G$,
+and $P$ is the internal pressure, 12.5~psig, as listed in 
+Table~\ref{table:blind_flange}.
+$W_{m1}$ is 2282.2~pound.\\
+
+The minimum required bolt load for gasket seating, $W_{m2}$, according to
+2-5(c)(3)(-b), is 0.
+
+According to 2-5(d), the maximum bolt space, $B_{s,max}$, can be obtained
+by Eq.~2.5(d)(3)
+
+\begin{equation}
+    B_{s,max} = 2a + \frac{6t}{m+0.5},
+\end{equation}
+
+where $a$ is the nominal bolt diameter, 0.313~in for 5/16"-18 bolts,
+and $m$ is the gasket factor, 0 for O-ring (Table~2-5.1).\\
+
+The maximum bolt spacing $B_{s,max}$ therefore should be 3.326~in,
+while SLArpaas has the bolt spacing 2.125~in.
+The requirement is satisfied.
+
+% ----------------------------------------------------------------------
+\subsection{Openings on the Top Plate}
+\label{app:openings}
+
+% ----------------------------------------------------------------------
+\subsubsection{Welded Connections}
+\label{app:welded}
+
+The required minimum thickness of SLArpaas is 0.225~in, and therefore
+UG-36(c)(3)(-a) applies,
+
+\begin{displayquote}
+    3 1/2 in. (89 mm) diameter -- in vessel shells or heads with a 
+    required minimum thickness of 3/8~in. (10~mm) or less;
+\end{displayquote}
+
+The largest openings have the diameter of 3~in, 
+and therefore no reinforcement is required for welded connections.
+
+% ----------------------------------------------------------------------
+\subsubsection{Reinforcement Required for Openings}
+\label{app:opening_reinforcement}
+
+The reinforcement requirements are based on UG-36(c)(3)(-c):
+
+\begin{displayquote}
+    no two isolated unreinforced openings, in accordance with (-a) 
+    or (-b) above, shall have their centers closer to each other than 
+    the sum of their diameters;
+\end{displayquote}
+
+Table~\ref{table:opening_dist} lists the distances of the openings on SLArpaas.
+
+\input{table/opening_dist}
+
+The total cross-section area of the reinforcement is given by 
+Eq.~UG-39(b)(1),
+
+\begin{equation}
+    A = 0.5dt + tt_n(1-f_{r1}),
+\end{equation}
+
+where $f_{r1}$ is defined in UG-37. 
+As this case corresponds to sketch (o) in Figure~UG-40,
+$f_{r1} = 1$.
+Therefore the total cross-section area of the reinforcement becomes,
+
+\begin{equation}
+    A = 0.5dt,
+\end{equation}
+where $t$ is the minimum required thickness, 0.225~in,
+and $d$ is finished diameter of circular opening or finished dimension 
+(chord length at mid-surface of thickness excluding excess thickness 
+available for reinforcement) of nonradial opening in the plane under 
+consideration, in. (mm) (UG-37).
+
+The reinforcement requirements can be found in UG-39(b)(2),
+
+\begin{displayquote}
+    Multiple openings none of which have diameters exceeding one‐half 
+    the head diameter and no pair having an average diameter greater 
+    than one‐quarter the head diameter may be reinforced individually 
+    as required by (1) above when the spacing between any pair of 
+    adjacent openings is equal to or greater than twice the average 
+    diameter of the pair.\\
+
+    When spacing between adjacent openings is less than twice but equal 
+    to or more than 1 1/4 the average diameter of the pair, the required 
+    reinforcement for each opening in the pair, as determined by (1) 
+    above, shall be summed together and then distributed such that 50\% 
+    of the sum is located between the two openings. 
+    Spacings of less than 1 1/4 the average diameter of adjacent openings 
+    shall be treated by rules of U-2(g).
+\end{displayquote}
+
+The existing reinforcement is greater than the shortest distance 
+between the two openings times the extra top plate thickness
+with respect to the minimum required thickness $t$,
+
+\begin{equation}
+    R = (s - \davg)\times(\tslarpaas-t).
+\end{equation}
+
+$s$ is the distance between the centers of the two openings,
+$\davg$ is the average diameter of the two openings,
+and $\tslarpaas$ is the actual thickness of the top plate.
+Reinforcement is fulfiled if $R$ is greater than $0.5A$,
+where $A = 0.5\davg t$ when the two openings have different 
+diameters.
+Table~\ref{table:opening_reinforcement} shows the parameters
+and the calculation results of the openings requiring 
+reinforcement.
+
+\input{table/opening_reinforcement}
+
+In summary, the reinforcement requirements are satisfied for
+all the openings.
