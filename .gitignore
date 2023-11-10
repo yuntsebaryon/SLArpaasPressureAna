@@ -6,3 +6,4 @@
 main.pdf
 *.toc
 .ipynb_checkpoints
+.DS_Store
