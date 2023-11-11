@@ -1,3 +1,77 @@
 \section{Dewar Pressure Analysis}
 \label{app:dewar}
 
+The Cryofab CF 1424-F dewar is made of stainless steel 304,
+as shown in Fig.~\ref{fig:dewar}.
+All the calculations in this appendix can be found at
+\url{https://github.com/yuntsebaryon/SLArpaasPressureAna/blob/main/notebook/DewarPressure.ipynb}.
+
+% ---------------------------------------------------------
+\subsection{Shells under Internal Pressure}
+\label{app:shell}
+
+The Cryofab pressure analysis only calculates the longitudinal 
+stress for the shell, based on UG-27(c)(2):
+
+\begin{displayquote}
+    Longitudinal Stress (Circumferential Joints). When the thickness does not exceed 
+    one‐half of the inside radius, or $P$ does not exceed 1.25$SE$ , 
+    the following formulas shall apply:\\
+\end{displayquote}
+
+\begin{equation}
+    P = \frac{2SEt}{R-0.4t}
+\end{equation}
+\\
+
+The parameters of the dewar and the resulting shell longitudinal stress
+can be found in Table~\ref{table:dewar}.
+
+\input{table/dewar}
+
+% ---------------------------------------------------------
+\subsection{Torispherical Bottom under Internal Pressure}
+\label{app:bottom}
+
+The bottom of the dewar has a torispherical shape based on the Cryofab
+analysis.
+Eq.~UG-32(d)(2) is therefore applied,
+\begin{equation}
+    P = \frac{SEt}{0.885L+0.1t},
+\label{eq:UG-32_d_2}
+\end{equation}
+
+Also, the bottom will be at the liquid argon temperature, 87~K,
+and according to UG-32(d)(2),
+
+\begin{displayquote}
+    Torispherical heads made of materials having a specified minimum 
+    tensile strength exceeding 70,000 psi (485 MPa) shall be designed 
+    using a value of S equal to 20,000 psi (138 MPa) at room temperature 
+    and reduced in proportion to the reduction in maximum allowable 
+    stress values at temperature for the material (see UG-23).
+\end{displayquote}
+
+As per Table~ULT-23, at the room temperature, the maximum allowable 
+stress, $S$, is 20000 psi, 
+while $S = 23400$~psi at $-300^{\circ}$F (88.71~K, the LAr temperature). 
+Therefore the reduction rate is $20000/23400 = 0.85$.
+(0.85 is used in the Cryofab analysis.
+I am wondering if it is correct -- should it be actually 23400/20000?)\\
+
+The thickness, $t$, in Eq.~\ref{eq:UG-32_d_2} should be the thickness
+of the bottom, $t_b$ in Table~\ref{table:dewar}, and the maximum allowable
+pressure can be evaluated by
+\begin{equation}
+    P = \frac{0.85SEt_b}{0.885L+0.1t_b} = 46.08~\text{psi}
+\end{equation}
+
+% ---------------------------------------------------------
+\subsection{Maximum Allowable Pressure in the Dewar}
+\label{app:mawp}
+
+The maximum allowable pressure in the dewar is the minimum value of
+the results in App.~\ref{app:shell} and \ref{app:bottom}, 46.08~psi,
+which is larger than the designate maximum allowable working pressure,
+10~psig.
+The pressure requirements are satisfied.
