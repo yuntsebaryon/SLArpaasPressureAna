@@ -1,9 +1,16 @@
 \section{Ring Flange Stress}
 \label{app:ring_flange}
 
-SLArpaas has flat face flanges with metal-to-metal contact outside the bolt
-circle, and Figure~Y-5.1.3 in non-Mandatory Appendix~Y, Class~3 Flange Assembly
-applies.
+% SLArpaas has flat face flanges with metal-to-metal contact outside the bolt
+% circle, and Figure~Y-5.1.3 in non-Mandatory Appendix~Y, Class~3 Flange Assembly
+% applies.
+
+The SLArpaas dewar and flange is made of stainless steel 304,
+and the parameters are listed in Table~\ref{table:ring_flange}.
+The calculations in this appendix can be found at
+\url{https://github.com/yuntsebaryon/SLArpaasPressureAna/blob/main/notebook/RingFlangeStress.ipynb}.\\
+
+\input{table/ring_flange}
 
 % ----------------------------------------------------------------------
 \subsection{Bolt Load}
@@ -15,13 +22,9 @@ The minimum required bolt load for the operating conditions,
 $W_{m1}$, can be obtained following Eq.~2-5(c)(3)(-a) with $H_p = 0$,
 
 \begin{equation}
-    W_{m1} = H + H_p = H = 0.785G^2 P,
+    W_{m1} = H + H_p = H = 0.785G^2 P.
 \end{equation}
 
-where $G = 15.25$~in, corresponding to the outside diamter of gasket contact
-face in option (b) of the definition of $G$,
-and $P$ is the internal pressure, 12.5~psig, as listed in 
-Table~\ref{table:blind_flange}.
 $W_{m1}$ is 2282.2~pound.\\
 
 The minimum required bolt load for gasket seating, $W_{m2}$, according to
@@ -35,12 +38,174 @@ According to 2-5(d), the maximum bolt space, $B_{s,max}$, can be obtained
 by Eq.~2.5(d)(3)
 
 \begin{equation}
-    B_{s,max} = 2a + \frac{6t}{m+0.5},
+    B_{s,max} = 2a + \frac{6t}{m+0.5}.
 \end{equation}
 
-where $a$ is the nominal bolt diameter, 0.313~in for 5/16"-18 bolts,
-and $m$ is the gasket factor, 0 for O-ring (Table~2-5.1).\\
+The cord length of the bolt spacing on SLArpaas can be calculated with
+\begin{equation}
+    B_s = \frac{C}{2}\frac{\sin(2\pi/n)}{\sin((\pi-(2\pi/n))/2)}.
+\end{equation}
 
-The maximum bolt spacing $B_{s,max}$ therefore should be 3.326~in,
-while SLArpaas has the bolt spacing 2.125~in.
+The maximum bolt spacing $B_{s,max}$ therefore should be 8.186~in,
+while SLArpaas has the bolt spacing 6.5~in.
 The requirement is satisfied.
+
+% ----------------------------------------------------------------------
+\subsection{Bolt Area}
+\label{app:bolt_area}
+
+The specified minimum tensile strength at room temperature, $S_T$,
+is 70000~psi in the Cryofab analysis.
+The bolts on McMaster are mostly made of SAE J429, and the Grade 2
+(low or medium carbon steel) with 1/4" - 3/4" size has the minimum 
+tensile strength 74000~psi.
+Therefore $S_T = 70000$~psi is a reasonable number.\\
+
+The allowable bolt stress at design temperature (see UG-23), $S_b$,
+is defined as $S_b = S_T/4$ in the Cryofab analysis.
+This can be found in Table 6-100(a), 6-100(b), 6-100(c) in Section~II 
+Part~D of the ASME code.\\
+
+The total cross‐sectional area of bolts at root of thread or section 
+of least diameter under stress,
+required for the operating conditions, $A_{m1} = W_{m1}/S_b$.\\
+
+The minimum required bolt area, $A_{m1} = 0.153~\text{in}^2$,
+while the area of each bolt, $A_b$, is 0.045~in$^2$, according to
+the Cryofab analysis.
+Note that the area of a 5/16"-18 bolt is 0.077~in$^2$.
+The total bolt area at SLArpaas is $A_bn = 0.045\times 8 = 0.36~\text{in}^2$,
+satisfying the requirement ($>0.153~\text{in}^2$).
+
+% ----------------------------------------------------------------------
+\subsection{Flange Design Bolt Load}
+\label{app:flange_bolt_load}
+
+According to Mandatory Appendix 2-5(e) in the ASME code,
+the flange design bolt load, $W$, can be obtained by
+
+\begin{equation}
+    W = W_{m1}
+\end{equation}
+
+for operating conditions, while
+
+\begin{equation}
+    W = \frac{(A_m+A_b)S_a}{2}
+\label{eq:flange_bolt_load_gasket_seating}
+\end{equation}
+
+for gasket seating.
+$S_a$ is allowable bolt stress at atmospheric temperature (UG-23).
+Also 2-5(e) explains,
+
+\begin{displayquote}
+    Sa used in eq. (5) (Eq.~\ref{eq:flange_bolt_load_gasket_seating} herein) 
+    shall be not less than that tabulated in the stress tables (see UG-23). 
+    In addition to the minimum requirements for safety, eq. (5) provides 
+    a margin against abuse of the flange from overbolting. 
+    Since the margin against such abuse is needed primarily for the initial, 
+    bolting‐up operation which is done at atmospheric temperature and before 
+    application of internal pressure, the flange design is required to satisfy 
+    this loading only under such conditions.
+\end{displayquote}
+
+In this specific case, $S_a = S_b$, $A_m = A_{m1}$.
+
+The flange design bolt load is 4489.9~pound.
+
+% ----------------------------------------------------------------------
+\subsection{Flange Moment}
+\label{app:flange_moment}
+
+For the operating conditions, the total flange moment is described
+in Appendix~2-6 in the ASME code,
+
+\begin{equation}
+    M_{op} = M_D+M_T+M_G,
+\end{equation}
+
+where $M_{op}$ is denoted as $M_o$ in the ASME code,
+$M_D = H_Dh_D$, $M_T = H_Th_T$ and $M_G = H_Gh_G$.
+
+All these variables can be found in Appendix~2-3 in the ASME code,
+and are listed below.\\
+
+$H_D$ = hydrostatic end force on area inside of flange \\
+= $0.785B^2P$
+
+$h_D$ = radial distance from the bolt circle, to the circle on which 
+$H_D$ acts, as prescribed in Table 2-6 \\
+= $(C-B)/2$
+
+$H_T$ = difference between total hydrostatic end force and the hydrostatic 
+end force on area inside of flange \\
+= $H - H_D$
+
+$h_T$ = radial distance from the bolt circle to the circle on which 
+$H_T$ acts as prescribed in Table 2-6 \\ 
+= $C/2 - (B/2+G/2)/2$
+
+$H_G$ = gasket load for the operating condition \\
+= $W_{m1} - H$
+
+$h_G$ = radial distance from gasket load reaction to the bolt circle \\
+= $(C-G)/2$ \\
+
+Therefore, the total flange moment for the operating conditions
+$M_{op} = 3918.78$~pound$\times$in.\\
+
+For gasket seating, the total flange moment is calculated based on
+Eq.~2-6(6) in the ASME code,
+
+\begin{equation}
+    M_a = W\frac{C-G}{2},
+\end{equation}
+
+where $M_a$ is denoted as $M_o$ in the ASME code.
+$M_a = 4296.85$~pound$\times$in.
+
+In Appendix~2-6 of the ASME code, it is stated,
+
+\begin{displayquote}
+    When the bolt spacing exceeds $2a + t$, multiply $M_O$ by the bolt spacing 
+    correction factor $B_{SC}$ for calculating flange stress, where \\
+
+    $B_{SC} = \sqrt{\frac{B_S}{2a+t}}$
+\end{displayquote}
+
+$B_{SC} = 2.28$ for the SLArpaas dewar.
+
+% ----------------------------------------------------------------------
+\subsection{Tangential Stress in Flange}
+\label{app:tangential_stress}
+
+The tangential stress, $S_T$, is defined in Appendix~2-7(b)(11) of the
+ASME code,
+
+\begin{equation}
+    S_T = \frac{YM_o}{t^2B}.
+\end{equation}
+
+
+We calculate the operating conditions ($M_{op}$) with the bolt spacing 
+factor, $B_{SC}$ applied,
+
+\begin{equation}
+    S_T = \frac{YM_{op}B_{SC}}{t^2B}.
+\end{equation}
+
+In addition, $Y$ is defined in Appendix~2-3 and Figure~2-7.1,
+
+\begin{equation}
+    Y = \frac{1}{K-1}[0.66845+5.7169\frac{K^2\log_{10}K}{K^2-1}],
+\end{equation}
+
+where $K = A/B$ is the ratio of outside diameter of flange to 
+inside diameter of flange.
+
+The tangential stress of the SLArpaas dewar flange is 12627.88~psi.
+As the maximum allowable stress value in tension from applicable table
+of stress values referenced by UG-23 (Table~ULT-23)
+is 20~kpi = 20000~psi at temperature of 0, 100, 150$^{\circ}$F,
+the tangential stress of the SLArpaas flange fulfils the requirement.
