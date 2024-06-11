@@ -1,0 +1,45 @@
+\section{Dewar Buckling Analysis}
+\label{app:buckling}
+
+The minimum unsupported length beyond which the critical pressure, $P_c$, is independent of $L$
+is called the critical length $L_c$ and is expressed as
+\begin{equation}
+    L_c = 1.14(1-\nu^2)^{1/4}D_0(D_0/t)^{1/2},
+\end{equation}
+and for $\nu=0.3$,
+\begin{equation}
+    \label{eq:critical_l}
+    L_c = 1.11D_0(D_0/t)^{1/2}.
+\end{equation}
+All the variables are described in Table~\ref{table:buckling}, and, 
+the Poisson's ratio, $\nu= 0.3$, together with all the formulas used in the Cryofab analysis,
+are taken from \textit{Pressure Vessel Design Handbook}.
+The choice of the Poisson's ratio can be found in the wiki,
+``Most steels and rigid polymers when used within their design limits (before yield) 
+exhibit values of about 0.3, increasing to 0.5 for post-yield deformation which occurs 
+largely at constant volume.''
+
+\input{table/buckling}
+
+For cylindrical shells with $L<L_c$,
+Cryofab uses the US Experimental Model Basin formula to calculate the critical pressure, $P_c$,
+under uniform external pressure,
+\begin{equation}
+    P_c = \frac{2.42E}{(1-\nu^2)^{3/4}}\left[\frac{(t/D_0)^{2.5}}{(L/D_0)-0.45(t/D_0)^{0.5}}\right].
+\end{equation}
+With $\nu = 0.3$ and $0.45(t/D_0)^{0.5}$ being negligible, $P_c$ can be written as
+\begin{equation}
+    \label{eq:critical_P}
+    P_c = 2.6E(t/D_0)^{2.5}/(L/D_0).
+\end{equation}
+
+The results are presented in Table~\ref{table:buckling}.
+Collapse occurs when 4.98~psi is applied outside the inner vessel shell; in other words,
+when the vacuum jacket fails and has 4.98~psi relative to the pressure in the inner vessel.
+
+%
+% ASME code calculation
+%
+% I use was UG-28, (c)(1) Step 7, with A = 0.000065 (obtained from (c)(1)),
+% and the result of the maximum allowable external working pressure, P_a = 2.08 psi
+%

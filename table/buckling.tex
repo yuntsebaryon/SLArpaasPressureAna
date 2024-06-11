@@ -1,0 +1,36 @@
+%-------------------------------------------------------------------
+\begin{table}[h]
+\begin{center}
+\tabcolsep=10pt
+\begin{tabular}{>{\raggedleft}m{4.5cm}|c|l|l|m{5.5cm}}
+\hline
+\hline
+Variable & & Value & Unit & Reference \\
+\hline
+Inner wall thickness & $t$ & 0.024 & inch & Cryofab analysis \\
+Inner cylinder effective length & $L$ & 24.92 & inch & Cryofab analysis \\
+Inner diameter & $D_0$ & 14 & inch & Cryofab analysis \\
+Poisson's ratio & $\nu$ & 0.3 & n/a & Pressure Vessel 
+Design Handbook\tablefootnote{Henry H. Bednar, P.E., Second Edition (1986), p.50--51} 
+and Wiki\tablefootnote{\url{https://en.wikipedia.org/wiki/Poisson's_ratio}} \\
+Elastic modulus for SS304 & $E$ & $28\times 10^6$ & psi & AISI 304 Stainless 
+Steel\tablefootnote{\url{https://304stainlesssteel.org/304-stainless-steel-properties/}} \\
+\hline
+Critical length for the inner shell & $L_c$ & 375 & inch & Eq.~\ref{eq:critical_l} \\
+Critical pressure for the inner shell & $P_c$ & 4.98 & psi & Eq.~\ref{eq:critical_P} \\
+\hline
+\hline
+Outer wall thickness & & 0.060 & inch & Cryofab analysis \\
+Outer cylinder effective length & & 25.70 & inch & Cryofab analysis \\
+Outer diameter & & 16 & inch & Cryofab analysis \\
+\hline
+Critical length for the outer shell & & 290 & inch & Eq.~\ref{eq:critical_l} \\
+Critical pressure for the outer shell & & 39 & psi & Eq.~\ref{eq:critical_P} \\
+\hline
+\hline
+\end{tabular}
+\caption{Buckling analysis for the dewar}
+\label{table:buckling}
+\end{center}
+\end{table}
+%-------------------------------------------------------------------
