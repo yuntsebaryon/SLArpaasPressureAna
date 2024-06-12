@@ -20,6 +20,7 @@
 \usepackage{csquotes}
 \usepackage{array}
 \usepackage{tablefootnote}
+\usepackage[]{todonotes}
 
 %-----------------------------------------------
 
@@ -53,6 +54,13 @@
 % -----------------------------------------------
 \input{tex/introduction}
 \input{tex/system}
+\input{tex/location}
+\input{tex/pressure_cal}
+\input{tex/discharge_rate}
+\input{tex/buckling}
+\input{tex/pressure_test}
+\input{tex/registration}
+\input{tex/hazard_ana}
 
 %------------------------------------------------
 % Appendix
@@ -60,6 +68,9 @@
 \clearpage
 \begin{appendices}
 
+\input{tex/app_pid}
+
+\clearpage    
 \input{tex/app_dewar_drawing}
 
 \clearpage
@@ -69,16 +80,34 @@
 \input{tex/app_topplate_drawing}
 
 \clearpage
-\input{tex/app_dewar}
+\input{tex/app_photo}
 
 \clearpage
-\input{tex/app_ringflange}
+\input{tex/app_partlist}
+
+\clearpage
+\input{tex/app_dewar_pressure_ana}
 
 \clearpage
 \input{tex/app_topplate}
 
 \clearpage
+\input{tex/app_ringflange}
+
+\clearpage
+\input{tex/app_discharge}
+
+\clearpage
 \input{tex/app_dewar_buckling}
+
+\clearpage
+\input{tex/app_manufacturer}
+
+\clearpage
+\input{tex/app_hazard_ana}
+% \input{tex/app_procedure}
+% \input{tex/app_registration}
+% \input{tex/app_pressure_test}
 
 \end{appendices}
 
