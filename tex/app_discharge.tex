@@ -1,6 +1,12 @@
 \section{Discharge Flowrate Calculation}
 \label{app:discharge}
 
+We calculate the the discharge capacity for Ar of the SLArpaas pressure relief device, 
+the MDC precision burst disc 420033,
+and assess the required discharge capacity in a few failure scenarios in this Appendix.
+Details of the calculation can be found in 
+\url{https://github.com/yuntsebaryon/SLArpaasPressureAna/blob/main/notebook/DischargeFlowrate.ipynb}.
+
 \subsection{Discharge Capacity}
 \label{app:discharge_capacity}
 
@@ -26,3 +32,70 @@ with the same burst disc,
 
 The burst disc has the discharge capacity of 390.9~scfm for Ar.
 
+% ------------------------------------------------------------------
+\subsection{Initial LAr Filling}
+
+At the beginning of the LAr filling, the LAr contacts the cryostat at room 
+temperature and evaporates.
+If we fail to open the venting valve V33, the SLArpaas vessel will be pressurized,
+and the burst disc will crack at 10~psig.
+Based on our experience, it takes at least one hour to consume a 230-L LAr
+supply dewar -- in fact, it often takes 2--2.5~hours, and we starts with
+a smaller opening.
+Therefore, using 230/60~L/min is an overestimate of the LAr flow at the
+initial filling. \\
+
+The overestimated Ar gas amount produced at the initial LAr filling
+is 3293.5~slpm, or 115.3~scfm, around 1/3 of the burst disc discharge capacity.
+
+% ------------------------------------------------------------------
+\subsection{Operation Failure Scenarios}
+
+There are two main operation failure scenarios:
+\begin{enumerate}
+    \item thermosyphon failure, losing its cooling power,
+    \item loss of the vacuum in the insulating jacket around the SLArpaas vessel, 
+    allowing air or Ar filling in.
+\end{enumerate}
+We calculate the individual heat load owing to the failure scenarios,
+and evaluate the Ar gas per minute produced by evaporation from this heat load,
+thereby verify the discharge capacity requirement of the burst disc.\\
+
+The heat transfer per unit time (power) is calculated by the equation,
+\begin{equation}
+    \label{eq:heat_transfer}
+    P = k\frac{A}{L}(T_H-T_L),
+\end{equation}
+where $k$ is the thermal conductivity of the material, $A$ is the area where
+the heat is tranferred across, $L$ is the thickness or the length of the 
+heat tranfer, and $T_H$ and $T_L$ are the high and low temperatures, respectively.
+All the parameters, together with the latent heat of Ar evaporation,
+and the results
+are listed in Table~\ref{table:failure_heat}.
+
+\input{table/failure_heat}
+
+% ------------------------------------------------------------------
+\subsubsection{Thermosyphon Failure}
+
+With the geometry of the thermosyphon evaporator used in SLArpaas not finalized,
+we don't have the exact number of its cooling power.
+However, we estimate the head load of the SLArpaas system is about $\sim$100~W,
+and based on the past calculation and experience, each thermosyphon evaporator
+can provide 100 -- 200~W.
+We therefore use an overestimate cooling power in this case: if 1000~W
+of heat load will evaporate the amount of Ar that the burst disc discharge capacity
+cannot cope with?
+The calculation indicates the Ar flow from the 1000~W of heat will be 7.82~scfm
+and the discharge rate of the burst disc is not a problem.
+
+% ------------------------------------------------------------------
+\subsubsection{SLArpaas Vacuum Insulation Failure}
+
+We consider the two scenarios when the vacuum insulation jacket around the
+SLArpaas vessel fails: air and Ar filled in.
+The upper bound of the heat transfer is the case where the vacuum jacket
+is full of air or Ar at room temperature and 1~atm.
+Effects from the superinsulation layers inside the vacuum jacket are negligible.
+The Ar flow is 1.17 and 0.78~scfm in the air and Ar cases, respectively,
+and the discharge capacity of the burst disc exceeds the requirement.
