@@ -1,0 +1,35 @@
+%-------------------------------------------------------------------
+\begin{table}[h]
+\begin{center}
+\tabcolsep=10pt
+\begin{tabular}{>{\raggedleft}m{5cm}|c|l|l|m{5.5cm}}
+\hline
+\hline
+Variable & & Value & Unit & Reference \\
+\hline
+Actual discharge area of the safety valve & $A$ & & in$^2$ & \\
+Constant for gas or vapor which is function of the ratio of specific heats, 
+$k = C_p/C_V$ & $C$ & & n/a & ASME Figure 11-1 \\
+   & $C_{air}$ & 356 & US unit & ASME App.~11-1 \\
+   & $C_{Ar}$ & 377.83 & US unit & Eq.~\ref{eq:constant_k} \\
+Ratio of specific heats for Ar & $k$ & 1.67 & n/a & $k = C_p/C_V$ \\
+Heat capacity at constant pressure for Ar & $C_p$ & 20.834 & J/mol$\times$K & NIST database \\
+Heat capacity at constant volume for Ar & $C_V$ & 12.479 & J/mol$\times$K & NIST database \\
+Coefficient of discharge & $K$ & & n/a & UG-131(d) and UG-131(e) \\
+Molecular weight & $M$ & & mol wt &  \\
+   & $M_{air}$ & 28.97 & mol wt & ASME App.~11-1 \\
+   & $M_{Ar}$ & 39.962 & mol wt & wiki \\
+(Set pressure x 1.10) plus atmospheric pressure & $P$ & & psia & \\
+Absolute temperature at inlet & $T$ & 60 & $^{\circ}$F & [($^{\circ}$F + 460) (K)], 
+SCF definition \\
+\hline
+Flow of any gas or vapor, here for Ar & $W$ & 1.43 & lb/hr &  \\ 
+Discharge capacity for Ar & & 390.9 & scfm & \\
+\hline
+\hline
+\end{tabular}
+\caption{Parameters to calculate the discharge capacity of Ar through the burst disc.}
+\label{table:discharge}
+\end{center}
+\end{table}
+%-------------------------------------------------------------------

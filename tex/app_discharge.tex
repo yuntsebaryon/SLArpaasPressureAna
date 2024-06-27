@@ -1,2 +1,28 @@
 \section{Discharge Flowrate Calculation}
 \label{app:discharge}
+
+\subsection{Discharge Capacity}
+\label{app:discharge_capacity}
+
+The MDC precision burst disc has a discharge capacity of 435~scfm for air.
+The corresponding discharge capacity of Ar is obtained from ASME Mandatory Appendix 11-1,
+\begin{equation}
+    \label{eq:discharge}
+    W = CKAP\sqrt{\frac{M}{T}},
+\end{equation}
+where $C$ is defined in ASME Fig.~11-1,
+\begin{equation}
+    \label{eq:constant_k}
+    C = 520\sqrt{k\left(\frac{2}{k+1}\right)^{\frac{k+1}{k-1}}},
+\end{equation}
+and the rest of the parameter is defined in Table~\ref{table:discharge}.
+$K$, $A$, $P$, $T$ are canceled out because they are identical for air and Ar
+with the same burst disc,
+\begin{equation}
+    \frac{W_{Ar}}{W_{air}} = \frac{C_{Ar}\sqrt{M_{Ar}}}{C_{air}\sqrt{M_{air}}}.
+\end{equation}
+
+\input{table/discharge}
+
+The burst disc has the discharge capacity of 390.9~scfm for Ar.
+
