@@ -18,14 +18,26 @@ The calculations in this appendix can be found at
 
 SLArPAAS I has an O-ring, one of the self-energizing types (Table~2.5-1),
 and therefore Mandatory Appendix~2 is referred herein.
-The minimum required bolt load for the operating conditions,
-$W_{m1}$, can be obtained following Eq.~2-5(c)(3)(-a) with $H_p = 0$,
 
+According to App.~2-3, the total joint-contact surface compression load,
 \begin{equation}
-    W_{m1} = H + H_p = H = 0.785G^2 P.
+    H_P = 2b\times \pi GmP,
 \end{equation}
+where $b$ is effective gasket or joint‐contact‐surface seating width
+and $m$ is gasket factor obtained from Table 2-5.1.
+Table 2-5.1 shows that in our case, $m = 0$, and therefore $H_P = 0$.
 
-$W_{m1}$ is 2282.2~pound.\\
+The minimum required bolt load for the operating conditions,
+$W_{m1}$, can be obtained following Eq.~2-5(c)(3)(-a) with $H_p = 0$ (see below),
+\begin{equation}
+    W_{m1} = H + H_p = H = 0.785G^2 P,
+\end{equation}
+where $H$ is total hydrostatic end force.
+$W_{m1}$ is 2679.84~pound.
+Adding the weights of the SLArPAAS I vessel, less than 60~pounds,
+and of the liquid argon filling with the vessel, 84~kg or 185.19~pound
+(60~L with the density 1.4~kg/L),
+the minimum required bolt load for the operation conditions is 2924.64~pounds.\\
 
 The minimum required bolt load for gasket seating, $W_{m2}$, according to
 2-5(c)(3)(-b), is 0.
@@ -110,9 +122,11 @@ Also 2-5(e) explains,
     this loading only under such conditions.
 \end{displayquote}
 
-In this specific case, $S_a = S_b$, $A_m = A_{m1}$.
+In this specific case, $S_a = S_b$, $A_m = A_{m1}$.\\
 
-The flange design bolt load is 4489.9~pound.
+The flange design bolt load is 4612.32~pounds 
+higher than the minimum required bolt load, 2924.64~pounds
+obtained in App.~\ref{app:bolt_load}.
 
 % ----------------------------------------------------------------------
 \subsection{Flange Moment}
@@ -163,7 +177,7 @@ Eq.~2-6(6) in the ASME code,
 \end{equation}
 
 where $M_a$ is denoted as $M_o$ in the ASME code.
-$M_a = 4296.85$~pound$\times$in.
+$M_a = 4296.85$~pound$\times$in.\\
 
 In Appendix~2-6 of the ASME code, it is stated,
 
